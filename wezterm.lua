@@ -5,15 +5,16 @@
 local wezterm = require("wezterm")
 
 -- -- Load the colors from my existing neobean colors.lua file
--- local colors = os.getenv("HOME") .. "/.config/wezterm/colors.lua"
+-- local colors=os.getenv("HOME") .. "/.config/wezterm/colors.lua"
 
 -- This will hold the configuration.
--- local config = wezterm.config_builder()
+-- local config=wezterm.config_builder()
 
-wezterm.add_to_config_reload_watch_list("/home/bowarc/.config/wezterm/colors/linkarzu.toml")
+wezterm.add_to_config_reload_watch_list("/home/bowarc/.config/wezterm/colors/wezterm.toml")
+wezterm.add_to_config_reload_watch_list("/home/bowarc/.config/wezterm/wezterm.lua")
 
 -- This is where you actually apply your config choices
-config = {
+local config = {
 
 	-- -- Setting the term to wezterm is what allows support for undercurl
 	-- --
@@ -23,7 +24,7 @@ config = {
 	-- -- https://github.com/wez/wezterm/blob/main/termwiz/data/wezterm.terminfo
 	-- --
 	-- -- If you're using tmux, set your tmux.conf file to:
-	-- -- set -g default-terminal "${TERM}"
+	-- -- set -g default-terminal "$ { TERM} "
 	-- -- So that it picks up the wezterm TERM we're defining here
 	-- --
 	-- -- NOTE: When inside neovim, run a `checkhealth` and under `tmux` you will see that
@@ -31,8 +32,8 @@ config = {
 	-- -- - Reload your tmux configuration,
 	-- -- - Then close all your tmux sessions, one at a time and quit wezterm
 	-- -- - re-open wezterm
-	-- term = "wezterm",
-	-- term = "xterm-256color",
+	-- term="wezterm",
+	-- term="xterm-256color",
 
 	-- When using the wezterm terminfo file, I had issues with images in neovim, images
 	-- were shown like split in half, and some part of the image always stayed on the
@@ -55,7 +56,7 @@ config = {
 	-- - re-open wezterm
 	--
 	-- Then you'll be able to set your terminal to `xterm-kitty` as seen below
-	-- term = "xterm-kitty",
+	-- term="xterm-kitty",
 
 	-- To enable kitty graphics
 	-- https://github.com/wez/wezterm/issues/986
@@ -68,7 +69,7 @@ config = {
 	-- In my wezterm video and will test them out
 	-- https://youtu.be/ibCPb4tSRXM
 	-- https://wezfurlong.org/wezterm/config/lua/config/animation_fps.html?h=animation
-	-- animation_fps = 120,
+	-- animation_fps=120,
 
 	-- Limits the maximum number of frames per second that wezterm will attempt to draw
 	-- I tried settings this value to 5, 15, 30, 60 and you do feel a difference
@@ -78,17 +79,17 @@ config = {
 	-- https://wezfurlong.org/wezterm/config/lua/config/max_fps.html
 	max_fps = 144,
 
-	-- front_end = "WebGpu" - will more directly use Metal than the OpenGL
+	-- front_end="WebGpu" - will more directly use Metal than the OpenGL
 	-- The default is "WebGpu". In earlier versions it was "OpenGL"
 	-- Metal translation used on M1 machines, may yield some more fps.
 	-- https://github.com/wez/wezterm/discussions/3664
 	-- https://wezfurlong.org/wezterm/config/lua/config/front_end.html?h=front_
-	-- front_end = "WebGpu",
+	-- front_end="WebGpu",
 
 	-- https://wezfurlong.org/wezterm/config/lua/config/webgpu_preferred_adapter.html?h=webgpu_preferred_adapter
 	-- webgpu_preferred_adapter
 
-	-- webgpu_power_preference = "LowPower"
+	-- webgpu_power_preference="LowPower"
 	-- https://wezfurlong.org/wezterm/config/lua/config/webgpu_power_preference.html
 
 	-- I use this for ñ and tildes in spanish á é í ó ú
@@ -96,7 +97,7 @@ config = {
 	-- https://github.com/wez/wezterm/discussions/4650
 	send_composed_key_when_left_alt_is_pressed = true,
 
-	-- default_prog = {
+	-- default_prog={
 	-- 	"/bin/zsh",
 	-- 	"--login",
 	-- 	"-c",
@@ -107,19 +108,19 @@ config = {
 	--      exec zsh;
 	--    fi
 	--    ]],
-	-- },
+	-- } ,
 
 	-- For example, changing the color scheme:
-	-- color_scheme = "AdventureTime"
+	-- color_scheme="AdventureTime"
 	color_scheme = "gruvbox-dark-medium",
 
 	-- Removes the macos bar at the top with the 3 buttons
 	window_decorations = "RESIZE",
 
 	-- https://wezfurlong.org/wezterm/config/lua/wezterm/font.html
-	-- font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" }),
+	-- font=wezterm.font("JetBrainsMono Nerd Font", {  weight="Bold" } ),
 	font = wezterm.font("Hack Nerd Font"),
-	-- font_size = 14.5,
+	-- font_size=14.5,
 	font_size = 13,
 
 	-- I don't use tabs
@@ -134,13 +135,13 @@ config = {
 	-- -- Neovim didn't need cursor changes, worked by setting it to "xterm-kitty"
 	-- --
 	default_cursor_style = "BlinkingBar",
-	-- default_cursor_style = "BlinkingBlock",
+	-- default_cursor_style="BlinkingBlock",
 
 	-- I don't like the the "Linear", which gives it a fade effect between blinks
 	cursor_blink_ease_out = "Linear",
 	cursor_blink_ease_in = "Linear",
 	-- Setting this to 0 disables blinking
-	-- cursor_blink_rate = 0,
+	-- cursor_blink_rate=0,
 
 	window_padding = {
 		left = 5,
@@ -149,24 +150,26 @@ config = {
 		bottom = 0,
 	},
 	keys = {
-    {key="RightArrow", mods="CTRL|ALT", action=wezterm.action.SplitPane{direction = "Right"}},
-    {key="LeftArrow", mods="CTRL|ALT", action=wezterm.action.SplitPane{direction = "Left"}},
-    {key="UpArrow", mods="CTRL|ALT", action=wezterm.action.SplitPane{direction = "Up"}},
-    {key="DownArrow", mods="CTRL|ALT", action=wezterm.action.SplitPane{direction = "Down"}},
+		{ key = "RightArrow", mods = "CTRL|ALT",   action = wezterm.action.SplitPane { direction = "Right" } },
+		{ key = "LeftArrow",  mods = "CTRL|ALT",   action = wezterm.action.SplitPane { direction = "Left" } },
+		{ key = "UpArrow",    mods = "CTRL|ALT",   action = wezterm.action.SplitPane { direction = "Up" } },
+		{ key = "DownArrow",  mods = "CTRL|ALT",   action = wezterm.action.SplitPane { direction = "Down" } },
 
-    {key = "LeftArrow", mods = "CTRL|SHIFT", action=wezterm.action{ActivatePaneDirection="Left"}},
-    {key = "DownArrow", mods = "CTRL|SHIFT", action=wezterm.action{ActivatePaneDirection="Down"}},
-    {key = "UpArrow", mods = "CTRL|SHIFT", action=wezterm.action{ActivatePaneDirection="Up"}},
-    {key = "RightArrow", mods = "CTRL|SHIFT", action=wezterm.action{ActivatePaneDirection="Right"}},
-		
-    {key="RightArrow", mods="ALT", action=wezterm.action.AdjustPaneSize{"Right", 1}},
-    {key="LeftArrow", mods="ALT", action=wezterm.action.AdjustPaneSize{"Left", 1}},
-    {key="UpArrow", mods="ALT", action=wezterm.action.AdjustPaneSize{"Up", 1}},
-    {key="DownArrow", mods="ALT", action=wezterm.action.AdjustPaneSize{"Down", 1}},
+		{ key = "LeftArrow",  mods = "CTRL|SHIFT", action = wezterm.action { ActivatePaneDirection = "Left" } },
+		{ key = "DownArrow",  mods = "CTRL|SHIFT", action = wezterm.action { ActivatePaneDirection = "Down" } },
+		{ key = "UpArrow",    mods = "CTRL|SHIFT", action = wezterm.action { ActivatePaneDirection = "Up" } },
+		{ key = "RightArrow", mods = "CTRL|SHIFT", action = wezterm.action { ActivatePaneDirection = "Right" } },
 
-  	{key = "+", mods="CTRL", action="IncreaseFontSize"},
-    {key = "-", mods="CTRL", action="DecreaseFontSize"},
-  },
+		{ key = "RightArrow", mods = "ALT",        action = wezterm.action.AdjustPaneSize { "Right", 1 } },
+		{ key = "LeftArrow",  mods = "ALT",        action = wezterm.action.AdjustPaneSize { "Left", 1 } },
+		{ key = "UpArrow",    mods = "ALT",        action = wezterm.action.AdjustPaneSize { "Up", 1 } },
+		{ key = "DownArrow",  mods = "ALT",        action = wezterm.action.AdjustPaneSize { "Down", 1 } },
+
+		{ key = "+",          mods = "CTRL",       action = "IncreaseFontSize" },
+		{ key = "-",          mods = "CTRL",       action = "DecreaseFontSize" },
+
+		{ key = "F4",         mods = "SHIFT",      action = wezterm.action.CloseCurrentPane { confirm = false } },
+	},
 }
 
 
