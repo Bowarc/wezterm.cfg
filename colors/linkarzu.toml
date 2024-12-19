@@ -1,0 +1,36 @@
+[colors]
+ansi = [
+    '#0D1116', # black
+    '#f16c75', # red
+    '#37f499', # green
+    '#19dfcf', # yellow
+    '#987afb', # blue
+    '#949ae5', # magenta
+    '#04d1f9', # cyan
+    '#ebfafa', # white
+]
+brights = [
+    '#5fa9f4', # bright black
+    '#f16c75', # bright red
+    '#37f499', # bright green
+    '#19dfcf', # bright yellow
+    '#987afb', # bright blue
+    '#949ae5', # bright magenta
+    '#04d1f9', # bright cyan
+    '#ebfafa', # bright white
+]
+
+split = '#37f499'
+cursor_bg = '#F712FF'
+cursor_border = '#37f499'
+# cursor_fg = '#0D1116'
+cursor_fg = '#FF0000'
+background = '#0D1116'
+foreground = '#ebfafa'
+selection_bg = '#e9b3fd'
+selection_fg = '#ebfafa'
+scrollbar_thumb = '#0D1116'
+
+[metadata]
+name = 'linkarzu'
+author = 'linkarzu'
