@@ -10,7 +10,7 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 -- local config=wezterm.config_builder()
 
-wezterm.add_to_config_reload_watch_list("/home/bowarc/.config/wezterm/colors/wezterm.toml")
+-- wezterm.add_to_config_reload_watch_list("/home/bowarc/.config/wezterm/colors/wezterm.toml")
 wezterm.add_to_config_reload_watch_list("/home/bowarc/.config/wezterm/wezterm.lua")
 
 -- This is where you actually apply your config choices
@@ -111,8 +111,10 @@ local config = {
 	-- } ,
 
 	-- For example, changing the color scheme:
-	-- color_scheme="AdventureTime"
-	color_scheme = "gruvbox-dark-medium",
+	-- color_scheme = "gruvbox-dark-medium",
+	-- color_scheme = "Ayu Dark (Gogh)",
+	color_scheme = "ayu_dark",
+	-- color_scheme = "Ayu",
 
 	-- Removes the macos bar at the top with the 3 buttons
 	window_decorations = "RESIZE",
@@ -143,6 +145,8 @@ local config = {
 	-- Setting this to 0 disables blinking
 	-- cursor_blink_rate=0,
 
+	hide_tab_bar_if_only_one_tab = true,
+
 	window_padding = {
 		left = 5,
 		right = 2,
@@ -169,6 +173,8 @@ local config = {
 		{ key = "-",          mods = "CTRL",       action = "DecreaseFontSize" },
 
 		{ key = "F4",         mods = "SHIFT",      action = wezterm.action.CloseCurrentPane { confirm = false } },
+
+		{ key = "t",          mods = "CTRL",       action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
 	},
 }
 
