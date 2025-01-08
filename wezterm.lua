@@ -153,6 +153,12 @@ local config = {
 		top = 15,
 		bottom = 0,
 	},
+
+	inactive_pane_hsb = {
+		saturation = 1.,
+		brightness = 1.,
+	},
+
 	keys = {
 		{ key = "RightArrow", mods = "CTRL|ALT",   action = wezterm.action.SplitPane { direction = "Right" } },
 		{ key = "LeftArrow",  mods = "CTRL|ALT",   action = wezterm.action.SplitPane { direction = "Left" } },
@@ -175,6 +181,9 @@ local config = {
 		{ key = "F4",         mods = "SHIFT",      action = wezterm.action.CloseCurrentPane { confirm = false } },
 
 		{ key = "t",          mods = "CTRL",       action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
+
+		-- Linux terminals are weird, this sends alt+backspace when you press ctrl+backspace
+		{ key = 'Backspace',  mods = 'CTRL',       action = wezterm.action.SendString('\x1b\x7f'), } 
 	},
 }
 
