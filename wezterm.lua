@@ -15,7 +15,6 @@ wezterm.add_to_config_reload_watch_list("/home/bowarc/.config/wezterm/wezterm.lu
 
 -- This is where you actually apply your config choices
 local config = {
-
 	-- -- Setting the term to wezterm is what allows support for undercurl
 	-- --
 	-- -- BEFORE you can set the term to wezterm, you need to install a copy of the
@@ -183,7 +182,8 @@ local config = {
 		{ key = "t",          mods = "CTRL",       action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
 
 		-- Linux terminals are weird, this sends alt+backspace when you press ctrl+backspace
-		{ key = 'Backspace',  mods = 'CTRL',       action = wezterm.action.SendString('\x1b\x7f'), } 
+		-- { key = 'Backspace',  mods = 'CTRL',       action = wezterm.action.SendString('\x1b\x7f'), }
+		{ key = 'Backspace',  mods = 'CTRL',       action = wezterm.action.SendKey { key = "Backspace", mods = "ALT" } },
 	},
 }
 
