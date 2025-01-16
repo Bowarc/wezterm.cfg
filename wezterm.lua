@@ -111,9 +111,7 @@ local config = {
 
 	-- For example, changing the color scheme:
 	-- color_scheme = "gruvbox-dark-medium",
-	-- color_scheme = "Ayu Dark (Gogh)",
 	color_scheme = "ayu_dark",
-	-- color_scheme = "Ayu",
 
 	-- Removes the macos bar at the top with the 3 buttons
 	window_decorations = "RESIZE",
@@ -184,6 +182,11 @@ local config = {
 		-- Linux terminals are weird, this sends alt+backspace when you press ctrl+backspace
 		-- { key = 'Backspace',  mods = 'CTRL',       action = wezterm.action.SendString('\x1b\x7f'), }
 		{ key = 'Backspace',  mods = 'CTRL',       action = wezterm.action.SendKey { key = "Backspace", mods = "ALT" } },
+
+		-- Fullscreen
+		-- Disable default
+		{ key = 'Enter',      mods = 'ALT',        action = wezterm.action.DisableDefaultAssignment },
+		{ key = 'F11',        mods = '',           action = wezterm.action.ToggleFullScreen },
 	},
 }
 
