@@ -96,25 +96,17 @@ local config = {
 	-- https://github.com/wez/wezterm/discussions/4650
 	send_composed_key_when_left_alt_is_pressed = true,
 
-	-- default_prog={
-	-- 	"/bin/zsh",
-	-- 	"--login",
-	-- 	"-c",
-	-- 	[[
-	--    if command -v tmux >/dev/null 2>&1; then
-	--      tmux attach || tmux new;
-	--    else
-	--      exec zsh;
-	--    fi
-	--    ]],
-	-- } ,
+	default_prog={
+		"/bin/fish",
+		"-l",
+	},
 
 	-- For example, changing the color scheme:
 	-- color_scheme = "gruvbox-dark-medium",
 	color_scheme = "ayu_dark",
 
 	-- Removes the macos bar at the top with the 3 buttons
-	window_decorations = "RESIZE",
+	window_decorations = "NONE",
 
 	-- https://wezfurlong.org/wezterm/config/lua/wezterm/font.html
 	-- font=wezterm.font("JetBrainsMono Nerd Font", {  weight="Bold" } ),
@@ -122,7 +114,7 @@ local config = {
 	-- font_size=14.5,
 	font_size = 13,
 
-	-- I don't use tabs
+	-- I use tabs
 	enable_tab_bar = true,
 
 	window_close_confirmation = "NeverPrompt",
@@ -188,6 +180,7 @@ local config = {
 		{ key = 'Enter',      mods = 'ALT',        action = wezterm.action.DisableDefaultAssignment },
 		{ key = 'F11',        mods = '',           action = wezterm.action.ToggleFullScreen },
 	},
+	disable_default_key_bindings = true
 }
 
 
