@@ -179,6 +179,11 @@ local config = {
 		-- Disable default
 		{ key = 'Enter',      mods = 'ALT',        action = wezterm.action.DisableDefaultAssignment },
 		{ key = 'F11',        mods = '',           action = wezterm.action.ToggleFullScreen },
+
+		-- Switch between tabs
+		{ key = "Tab",        mods = "CTRL",       action = wezterm.action.ActivateTabRelative(1) },
+		{ key = "Tab",        mods = "CTRL|SHIFT", action = wezterm.action.ActivateTabRelative(-1) }
+
 	},
 	disable_default_key_bindings = true
 }
